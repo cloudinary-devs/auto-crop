@@ -49,7 +49,7 @@ export default function getCroppedImage(publicId, cropMode, gravityType) {
   }
   else { 
     // If there's no crop mode, just scale the image
-    myImage.resize(scale().width(200));
+    myImage.resize(scale().height(200));
   }
 
 

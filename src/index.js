@@ -1,14 +1,16 @@
 import './style.css';
 import getCroppedImage from './cropModes';
 
-const publicIds = ['docs/camera', 'docs/happy_people', 'docs/golf'];
-const imageUrls = ['', '', ''];
+const publicIds = ['docs/camera_1280-1020', 'docs/happy_people', 'docs/golf', 'docs/woman-hiker-mountain-water', 'docs/crowd-faces', 'docs/landscape-country'];
+const imageUrls = ['', '', '', '', '', ''];
+
+const numImages = publicIds.length;
 
 function updateImages() {
     const cropMode = document.getElementById('cropmode').value;
     const gravityType = document.getElementById('gravitytype').value;
 
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= numImages; i++) {
         const imgElement = document.getElementById(`displayedImage${i}`);
         imgElement.src = getCroppedImage(publicIds[i - 1], cropMode, gravityType).toURL();
     }
@@ -90,7 +92,7 @@ element.appendChild(divCenter);
 
 const spanContainer = document.createElement('span');
 
-for (let i = 1; i <= 3; i++) {
+for (let i = 1; i <= numImages; i++) {
     const imgElement = document.createElement('img');
     imgElement.src = imageUrls[i - 1];
     imgElement.setAttribute('id', `displayedImage${i}`);
