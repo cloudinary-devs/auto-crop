@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/cloudinary-devs/auto-crop#readme",
   "dependencies": {
-    "@cloudinary/url-gen": "^1.14.0",
+    "@cloudinary/url-gen": "^1.15.0",
     "css-loader": "6.5.1",
     "html-webpack-plugin": "5.5.0",
     "http-server": "14.1.0",

@@ -11,9 +11,6 @@ export default function getCroppedImage(publicId, cropMode, gravityType) {
     }
   });
 
-  console.log("Crop mode: ", cropMode);
-  console.log("Gravity type:", gravityType);
-
   // Instantiate a CloudinaryImage object for the image
   const myImage = cld.image(publicId); 
   
