@@ -1,18 +1,42 @@
 import './style.css';
 import getCroppedImage from './cropModes';
 
-const publicIds = ['docs/camera_1280-1020', 'docs/happy_people', 'docs/golf', 'docs/woman-hiker-mountain-water', 'docs/crowd-faces', 'docs/landscape-country'];
-const imageUrls = ['', '', '', '', '', ''];
+const publicIds = [
+    'docs/camera_1280-1020', 
+    'docs/handbag1',
+    'docs/golf', 
+    'docs/handbag2',
+    'docs/woman-hiker-mountain-water', 
+    'docs/crowd-faces', 
+    'docs/landscape-country',
+    'docs/happy_people', 
+    'docs/2cats_door'];
+const imageUrls = ['', '', '', '', '', '', '', '', ''];
 
 const numImages = publicIds.length;
 
 function updateImages() {
+
+    const ar = document.getElementById('ar').value;
+
+    if (ar === 'original') {
+        cropModeDropdown.querySelector('select').value = 'none';
+        gravityTypeDropdown.querySelector('select').value = 'none';
+
+        cropModeDropdown.querySelector('select').disabled = true;
+        gravityTypeDropdown.querySelector('select').disabled = true;
+    }
+    else {
+        cropModeDropdown.querySelector('select').disabled = false;
+        gravityTypeDropdown.querySelector('select').disabled = false;
+    }
+
     const cropMode = document.getElementById('cropmode').value;
     const gravityType = document.getElementById('gravitytype').value;
 
     for (let i = 1; i <= numImages; i++) {
         const imgElement = document.getElementById(`displayedImage${i}`);
-        imgElement.src = getCroppedImage(publicIds[i - 1], cropMode, gravityType).toURL();
+        imgElement.src = getCroppedImage(publicIds[i - 1], cropMode, gravityType, ar).toURL();
     }
 }
 
@@ -59,8 +83,17 @@ function createSelectionArea(labelText, id, values) {
     return surround; // Return the created div for setting the initial value later
 }
 
+
+
 // Set the public IDs
 const [publicId1, publicId2, publicId3] = publicIds;
+
+const aspectRatioDropdown = createSelectionArea('Select an aspect ratio', 'ar', [
+    'Original',
+    'Square',
+    'Portrait',
+    'Landscape'
+]);
 
 // Create corp mode dropdown
 const cropModeDropdown = createSelectionArea('Select a crop mode', 'cropmode', [
@@ -73,9 +106,12 @@ const cropModeDropdown = createSelectionArea('Select a crop mode', 'cropmode', [
 // Create gravity type dropdown
 const gravityTypeDropdown = createSelectionArea('Select a type of gravity', 'gravitytype', ['None', 'Auto',]);
 
+
+
 // Set 'None' as the initial selected option for both select boxes
 cropModeDropdown.querySelector('select').value = 'none';
 gravityTypeDropdown.querySelector('select').value = 'none';
+aspectRatioDropdown.querySelector('select').value = 'original';
 
 // Add spacing between the second select box and the images
 const spacingBetweenSelectAndImages = document.createElement('div');
@@ -105,5 +141,6 @@ document.body.appendChild(element);
 
 document.getElementById('cropmode').addEventListener('change', updateImages);
 document.getElementById('gravitytype').addEventListener('change', updateImages);
+document.getElementById('ar').addEventListener('change', updateImages);
 
 updateImages();
