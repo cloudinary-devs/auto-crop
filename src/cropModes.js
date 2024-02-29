@@ -1,6 +1,7 @@
 import { Cloudinary } from "@cloudinary/url-gen";
-import { scale, fill, thumbnail, auto } from "@cloudinary/url-gen/actions/resize";
+import { scale, fill, thumbnail, auto, autoPad, pad } from "@cloudinary/url-gen/actions/resize";
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import {auto as bgAuto, color} from "@cloudinary/url-gen/qualifiers/background";
 
 export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
 
@@ -63,6 +64,14 @@ export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
       else {
         myImage.resize(auto().width(width).height(height));
       }
+    }
+    else if (cropMode === "auto_pad"){
+      // Specify the padding to be colored automatically
+      myImage.resize(autoPad().width(width).height(height).gravity(autoGravity()).background(bgAuto()));
+
+      // Specify the padding to be black
+      //myImage.resize(autoPad().width(width).height(height).gravity(autoGravity()).background(color("black")));
+
     }
 
   }

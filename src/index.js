@@ -31,7 +31,17 @@ function updateImages() {
         gravityTypeDropdown.querySelector('select').disabled = false;
     }
 
+    
+
     const cropMode = document.getElementById('cropmode').value;
+
+    // c_auto_pad must be used with g_auto
+    if (cropMode == 'auto_pad')
+    {
+        gravityTypeDropdown.querySelector('select').value = 'auto';
+        gravityTypeDropdown.querySelector('select').disabled = true;
+    }
+
     const gravityType = document.getElementById('gravitytype').value;
 
     for (let i = 1; i <= numImages; i++) {
@@ -101,6 +111,7 @@ const cropModeDropdown = createSelectionArea('Select a crop mode', 'cropmode', [
     'Fill',
     'Thumb',
     'Auto',
+    'Auto Pad'
 ]);
 
 // Create gravity type dropdown
