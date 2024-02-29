@@ -5,17 +5,10 @@ module.exports = {
   mode: 'production',
   entry: {
     index: './src/index.js',
-    video: './src/videos.js', 
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'auto-crop',
-      excludeChunks: [ 'video' ]
-    }),
-    new HtmlWebpackPlugin({
-      title: 'cld-js-sdk-docs-video-examples',
-      filename: 'videos.html',
-      excludeChunks: [ 'index' ]
     }),
   ],
   output: {

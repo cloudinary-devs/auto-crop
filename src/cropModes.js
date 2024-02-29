@@ -72,6 +72,9 @@ export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
       // Specify the padding to be black
       //myImage.resize(autoPad().width(width).height(height).gravity(autoGravity()).background(color("black")));
 
+      // Specify the padding to be RGB #000000
+      //myImage.resize(autoPad().width(width).height(height).gravity(autoGravity()).background(color("#000000")));
+
     }
 
   }
