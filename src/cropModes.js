@@ -5,7 +5,7 @@ import {auto as bgAuto, color} from "@cloudinary/url-gen/qualifiers/background";
 
 export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
 
-  // Create a Cloudinary instance and set your cloud name.
+  // Create a Cloudinary instance and set the cloud name.
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'demo'
@@ -17,6 +17,7 @@ export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
   let width = 200;
   let height = 200;
 
+  // Set the dimensions based on the selected aspect ratio
   if (ar === 'original')
   {
     cropMode = 'none';
@@ -40,7 +41,6 @@ export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
   if (cropMode !== "none") {
 
     // Resize the image according to the crop mode
-
     if (cropMode === "fill"){   
       if (gravityType === "auto"){
         myImage.resize(fill().width(width).height(height).gravity(autoGravity()));
@@ -83,6 +83,6 @@ export default function getCroppedImage(publicId, cropMode, gravityType, ar) {
     myImage.resize(scale().height(200));
   }
 
-
+  // Return the transformed CloudinaryImage object
   return myImage;
 }
