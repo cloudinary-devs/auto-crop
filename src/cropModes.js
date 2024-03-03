@@ -1,5 +1,5 @@
 import { Cloudinary } from "@cloudinary/url-gen";
-import { scale, fill, thumbnail, auto, autoPad, pad } from "@cloudinary/url-gen/actions/resize";
+import { scale, fill, thumbnail, auto, autoPad } from "@cloudinary/url-gen/actions/resize";
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import {auto as bgAuto, color} from "@cloudinary/url-gen/qualifiers/background";
 
